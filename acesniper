@@ -1,0 +1,630 @@
+print("deobf by discord.gg/speedhub")
+print("neymarish the goat")
+print("deobf by discord.gg/speedhub")
+print("neymarish the goat")
+print("deobf by discord.gg/speedhub")
+
+local fn26, fn27, TweenService, RunService, Stats, localPlayer, genv, fn28, tbl17
+local createUICorner, createUIStroke, screenGui, n31, frame, flag14
+
+do
+  do
+    local fn29, createFrame
+
+    do
+      local aceRemoteMapper, genv2, fn30, ReplicatedStorage
+
+      do
+        local concat, tbl18
+
+        do
+          do
+            do
+            end
+
+            do
+              local function fn31(arg)
+                local tbl19 = {}
+
+                if type(gethui) == "function" then
+                  local ok, result = pcall(gethui)
+
+                  if ok and result then
+                    tbl19[#tbl19 + 1] = result
+                  end
+                end
+
+                local ok, result = pcall(function()
+                  return game:GetService("CoreGui")
+                end)
+
+                if ok and result then
+                  tbl19[#tbl19 + 1] = result
+                end
+
+                if arg then
+                  tbl19[#tbl19 + 1] = arg
+                end
+
+                return tbl19
+              end
+
+              fn29 = function(arg, arg2)
+                for _, v75 in ipairs(fn31(arg2)) do
+                  pcall(function()
+                    arg.Parent = v75
+                  end)
+
+                  if arg.Parent == v75 then
+                    return v75
+                  end
+                end
+
+                return arg.Parent
+              end
+
+              fn30 = function(arg, ...)
+                local v75 = fn31(arg)
+
+                for _, v76 in ipairs({ ... }) do
+                  for _, v77 in ipairs(v75) do
+                    pcall(function()
+                      local v78 = v77:FindFirstChild(v76)
+
+                      if v78 then
+                        v78:Destroy()
+                      end
+                    end)
+                  end
+                end
+              end
+            end
+          end
+
+          createFrame = function(parent, arg)
+            local tbl19 = arg or {}
+            local aceFallingDots = parent:FindFirstChild("ACEFallingDots")
+
+            if aceFallingDots then
+              aceFallingDots:Destroy()
+            end
+
+            local frame2 = Instance.new("Frame")
+            frame2.Name = "ACEFallingDots"
+            frame2.Size = UDim2.fromScale(1, 1)
+            frame2.BackgroundTransparency = 1
+            frame2.BorderSizePixel = 0
+            frame2.ClipsDescendants = true
+            frame2.Active = false
+            frame2.ZIndex = tbl19.ZIndex or 90
+            frame2.Parent = parent
+            local service = game:GetService("UserInputService")
+            local TweenService2 = game:GetService("TweenService")
+            local count = tbl19.Count or service.TouchEnabled and not service.KeyboardEnabled and 10 or 18
+            local v75 = Random.new()
+            local flag15 = true
+
+            frame2.Destroying:Connect(function()
+              flag15 = false
+            end)
+
+            for i = 1, count do
+              task.spawn(function()
+                local frame3 = Instance.new("Frame")
+                frame3.Name = "FallingDot"
+                frame3.AnchorPoint = Vector2.new(0.5, 0.5)
+                frame3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                frame3.BorderSizePixel = 0
+                frame3.Active = false
+                frame3.Visible = false
+                frame3.ZIndex = frame2.ZIndex + 1
+                frame3.Parent = frame2
+                local instance = Instance.new("UICorner")
+                instance.CornerRadius = UDim.new(1, 0)
+                instance.Parent = frame3
+                task.wait(v75:NextNumber(0, tbl19.InitialSpread or 4.5))
+
+                while flag15 and frame2.Parent and parent.Parent do
+                  local screenGui2 = parent:FindFirstAncestorOfClass("ScreenGui")
+
+                  if (not screenGui2 or screenGui2.Enabled) and frame2.Visible then
+                    local v76 = v75:NextInteger(2, 4)
+                    local v77 = v75:NextNumber(0.03, 0.97)
+                    local v78 = 0.98
+                    local n32 = math.clamp(v77 + v75:NextNumber(-0.15, 0.1), 0.02, v78)
+                    local v79 = v75:NextNumber(tbl19.MinDuration or 4.8, tbl19.MaxDuration or 8.2)
+                    frame3.Size = UDim2.fromOffset(v76, v76)
+                    frame3.Position = UDim2.new(v77, 0, -0.1, -v76)
+                    frame3.BackgroundTransparency = v75:NextNumber(0.28, 0.58)
+                    frame3.Visible = true
+
+                    local tween = TweenService2:Create(frame3, TweenInfo.new(v79, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+                      Position = UDim2.new(n32, 0, 1.06, v76),
+                      BackgroundTransparency = v75:NextNumber(0.48, 0.76),
+                    })
+
+                    tween:Play()
+                    tween.Completed:Wait()
+                    frame3.Visible = false
+                  else
+                    frame3.Visible = false
+                    task.wait(0.35)
+                  end
+
+                  task.wait(v75:NextNumber(0.12, 0.45))
+                end
+
+                if frame3.Parent then
+                  frame3:Destroy()
+                end
+              end)
+            end
+
+            return frame2
+          end
+
+          genv2 = getgenv and getgenv() or _G
+          ReplicatedStorage = cloneref and cloneref(game:GetService("ReplicatedStorage")) or game:GetService("ReplicatedStorage")
+          aceRemoteMapper = type(genv2.ACERemoteMapper) == "table" and genv2.ACERemoteMapper
+            or type(genv2._RaVeNet) == "table" and genv2._RaVeNet
+            or type(_G._RaVeNet) == "table" and _G._RaVeNet
+            or {}
+          concat = table.concat
+          tbl18 = {}
+
+          do
+            local str7 = tostring(game.GameId)
+            local str8 = tostring(game.PlaceId)
+            local v75 = tostring
+            local jobId = game.JobId
+            tbl18[1] = str7
+            tbl18[2] = str8
+
+            do
+              local values = table.pack(v75(jobId))
+              table.move(values, 1, values.n, 3, tbl18)
+            end
+          end
+        end
+
+        do
+          local v75 = concat(tbl18, ":")
+          aceRemoteMapper.generation = tonumber(aceRemoteMapper.generation) or 0
+
+          if aceRemoteMapper.session ~= v75 then
+            aceRemoteMapper.generation = aceRemoteMapper.generation + 1
+            aceRemoteMapper.bypass = nil
+            aceRemoteMapper.cache = {}
+            aceRemoteMapper.pending = {}
+            aceRemoteMapper.blocked = false
+            aceRemoteMapper.buildFailedAt = nil
+            aceRemoteMapper.lastError = nil
+          end
+
+          aceRemoteMapper.session = v75
+        end
+      end
+
+      do
+        local fn31
+
+        do
+          aceRemoteMapper.reps = ReplicatedStorage
+          aceRemoteMapper.layers = tonumber(aceRemoteMapper.layers) or 2
+          aceRemoteMapper.buildRetryGap = tonumber(aceRemoteMapper.buildRetryGap) or 15
+          aceRemoteMapper.cache = type(aceRemoteMapper.cache) == "table" and aceRemoteMapper.cache or {}
+          aceRemoteMapper.pending = type(aceRemoteMapper.pending) == "table" and aceRemoteMapper.pending or {}
+          aceRemoteMapper.sentinel = "068a6294"
+          aceRemoteMapper.resolveCount = tonumber(aceRemoteMapper.resolveCount) or 0
+          aceRemoteMapper.cacheHits = tonumber(aceRemoteMapper.cacheHits) or 0
+          aceRemoteMapper.allowProtectedBuild = false
+          aceRemoteMapper.bypass = nil
+          genv2.GreenDuelsNetBypass = nil
+          _G.GreenDuelsNetBypass = nil
+
+          do
+            local tbl18 = {
+              getgenv = true,
+              getrenv = true,
+              getsenv = true,
+              getreg = true,
+              getgc = true,
+              filtergc = true,
+              cloneref = true,
+              compareinstances = true,
+              gethui = true,
+              loadstring = true,
+              newcclosure = true,
+              hookfunction = true,
+              hookmetamethod = true,
+              replaceclosure = true,
+              restorefunction = true,
+              checkcaller = true,
+              isexecutorclosure = true,
+              isourclosure = true,
+              islclosure = true,
+              iscclosure = true,
+              clonefunction = true,
+              getcallingscript = true,
+              getscriptclosure = true,
+              getscriptbytecode = true,
+              getconnections = true,
+              firesignal = true,
+              fireproximityprompt = true,
+              firetouchinterest = true,
+              getnamecallmethod = true,
+              setnamecallmethod = true,
+              setthreadidentity = true,
+              getthreadidentity = true,
+              setidentity = true,
+              getidentity = true,
+              identifyexecutor = true,
+              getexecutorname = true,
+              writefile = true,
+              readfile = true,
+              appendfile = true,
+              isfile = true,
+              delfile = true,
+              listfiles = true,
+              makefolder = true,
+              isfolder = true,
+              delfolder = true,
+              getcustomasset = true,
+              saveinstance = true,
+              request = true,
+              http_request = true,
+              setclipboard = true,
+              queue_on_teleport = true,
+              decompile = true,
+              syn = true,
+              crypt = true,
+              WebSocket = true,
+              Drawing = true,
+            }
+
+            fn31 = function(arg, arg2)
+              local tbl19 = {}
+
+              for k, v75 in pairs(arg) do
+                if not tbl18[k] then
+                  if not (type(v75) == "function" and type(isexecutorclosure) == "function" and isexecutorclosure(v75)) then
+                    tbl19[k] = v75
+                  end
+                end
+              end
+
+              rawset(tbl19, "script", arg2)
+              rawset(tbl19, "shared", shared)
+              return tbl19
+            end
+          end
+        end
+
+        do
+          local function fn32(arg)
+            local v75 = "Instance"
+            if typeof(arg) ~= v75 or type(getsenv) ~= "function" then
+              return nil
+            end
+
+            if arg:IsA("ModuleScript") then
+              pcall(require, arg)
+            end
+
+            local ok, result = pcall(getsenv, arg)
+            local flag15 = ok and type(result) == "table"
+
+            if flag15 then
+              local v76 = "Instance"
+              flag15 = typeof(rawget(result, "script")) == v76
+            end
+
+            if flag15 then
+              return result
+            end
+            return nil
+          end
+
+          aceRemoteMapper.PickEnv = function(arg)
+            local controllers = arg.reps:FindFirstChild("Controllers")
+            local animals = arg.reps:FindFirstChild("Datas")
+            local tbl18 = {}
+            local v75 = controllers and controllers:FindFirstChild("LiveboardController")
+            controllers = controllers and controllers:FindFirstChild("AnimalController")
+            animals = animals and animals:FindFirstChild("Animals")
+            tbl18[1] = v75
+            tbl18[2] = controllers
+            tbl18[3] = animals
+            local v76 = nil
+
+            for i = 1, #tbl18 do
+              local v77 = tbl18[i]
+              if typeof(v77) ~= "Instance" then
+                continue
+              end
+              v76 = v76 or v77
+              local v78 = fn32(v77)
+              if v78 then
+                return v78, v77
+              end
+            end
+
+            if not v76 or type(getrenv) ~= "function" then
+              return nil, nil
+            end
+            local ok, result = pcall(getrenv)
+            local flag15 = not ok
+            local flag16
+
+            if flag15 then
+              flag16 = flag15
+            else
+              local v77 = "table"
+              flag16 = type(result) ~= v77
+            end
+
+            if flag16 then
+              return nil, nil
+            end
+            return fn31(result, v76), v76
+          end
+        end
+      end
+
+      aceRemoteMapper.Build = function(arg)
+        if arg.blocked then
+          return nil
+        end
+
+        if not arg.allowProtectedBuild then
+          arg.lastError = "protected build disabled"
+          return nil
+        end
+
+        if arg.bypass then
+          return arg.bypass
+        end
+        local buildFailedAt = arg.buildFailedAt
+
+        if buildFailedAt then
+          local buildFailedAt2 = arg.buildFailedAt
+          buildFailedAt = os.clock() - buildFailedAt2 < arg.buildRetryGap
+        end
+
+        if buildFailedAt then
+          return nil
+        end
+        local bypass = nil
+
+        local ok, result = pcall(function()
+          if type(loadstring) ~= "function" or type(setfenv) ~= "function" then
+            error("loadstring/setfenv unavailable", 0)
+          end
+
+          local Net = require(arg.reps.Packages.Net)
+
+          if type(Net) ~= "table" then
+            error("Packages.Net did not return a table", 0)
+          end
+
+          local v75, v76 = arg:PickEnv()
+
+          if not v75 or not v76 then
+            error("invalid input", 0)
+          end
+
+          local n32 = math.max(1, math.floor(arg.layers))
+
+          local tbl18 = {
+            "return function(__env, __out, __func, ...)",
+            "\tsetfenv(0, __env)",
+            ("\tlocal function l%d(...) return __func(...) end"):format(n32),
+          }
+
+          for i = n32 - 1, 1, -1 do
+            tbl18[#tbl18 + 1] = ("\tlocal function l%d(...) return l%d(...) end"):format(i, i + 1)
+          end
+
+          tbl18[#tbl18 + 1] = "\t__out.result = table.pack(pcall(l1, ...))"
+          tbl18[#tbl18 + 1] = "\t__out.done = true"
+          tbl18[#tbl18 + 1] = "end"
+          local chunk, v77 = loadstring(table.concat(tbl18, "\n"), "=" .. v76:GetFullName())
+
+          if not chunk then
+            error(v77 or "compile failed", 0)
+          end
+
+          setfenv(chunk, v75)
+          local v78 = chunk()
+          local v79 = getthreadidentity or getidentity
+          local v80 = setthreadidentity or setidentity
+          local flag15 = type(v79) ~= "function"
+          local flag16
+
+          if flag15 then
+            flag16 = flag15
+          else
+            local v81 = "function"
+            flag16 = type(v80) ~= v81
+          end
+
+          if flag16 then
+            error("thread identity functions unavailable", 0)
+          end
+
+          local function fn31(arg2, ...)
+            local tbl19 = {}
+            local v81 = v79()
+            local ok, result = pcall(v80, 2)
+
+            if not ok then
+              error(result, 3)
+            end
+
+            local thread = coroutine.create(v78)
+            local resume = coroutine.resume
+            local v82 = table.pack(...)
+            local v83 = v75
+            v82.n = 5 + v82.n - 1
+            table.move(v82, 1, v82.n, 5, v82)
+            v82[1] = thread
+            v82[2] = v83
+            v82[3] = tbl19
+            v82[4] = arg2
+            local v84, v85 = resume(table.unpack(v82, 1, v82.n))
+            pcall(v80, v81)
+
+            if not v84 then
+              error(v85, 3)
+            end
+
+            local n33 = os.clock() + 15
+
+            while not tbl19.done and coroutine.status(thread) ~= "dead" and os.clock() < n33 do
+              task.wait()
+            end
+
+            local result2 = tbl19.result
+
+            if not result2 then
+              error("no remote", 3)
+            end
+
+            if not result2[1] then
+              error(result2[2], 3)
+            end
+
+            return table.unpack(result2, 2, result2.n)
+          end
+
+          local tbl19 = {}
+
+          bypass = setmetatable({}, {
+            __index = function(arg2, arg3)
+              local v81 = tbl19[arg3]
+              if v81 ~= nil then
+                return v81
+              end
+              local v82 = Net[arg3]
+              if type(v82) ~= "function" then
+                tbl19[arg3] = v82
+                return v82
+              end
+
+              local function fn32(arg4, ...)
+                if arg4 == arg2 or arg4 == Net then
+                  return fn31(v82, Net, ...)
+                end
+                return fn31(v82, Net, arg4, ...)
+              end
+
+              tbl19[arg3] = fn32
+              return fn32
+            end,
+            __metatable = "Instance",
+          })
+        end)
+
+        arg.bypass = bypass
+
+        if bypass then
+          arg.buildFailedAt = nil
+          arg.lastError = nil
+        else
+          arg.buildFailedAt = os.clock()
+          arg.lastError = tostring(result)
+        end
+
+        genv2.GreenDuelsNetBypass = bypass
+        _G.GreenDuelsNetBypass = bypass
+        return bypass
+      end
+
+      aceRemoteMapper.Trip = function(arg, raVeNetBlockReason)
+        arg.generation = arg.generation + 1
+        arg.blocked = true
+        arg.bypass = nil
+        arg.buildFailedAt = os.clock()
+        arg.lastError = "blocked: " .. tostring(raVeNetBlockReason)
+        genv2.GreenDuelsNetBypass = nil
+        genv2._RaVeNetBlockReason = raVeNetBlockReason
+        _G.GreenDuelsNetBypass = nil
+        _G._RaVeNetBlockReason = raVeNetBlockReason
+      end
+
+      aceRemoteMapper.IsSentinel = function(arg, arg2)
+        return type(arg2) == "string" and arg2:find(arg.sentinel, 1, true) ~= nil
+      end
+
+      aceRemoteMapper.Register = function(arg, arg2, arg3, arg4)
+        local v75 = "function"
+        if type(arg2) ~= v75 or type(arg3) ~= "string" then
+          return nil
+        end
+
+        if typeof(arg4) ~= "Instance" or not arg4:IsA(arg2) or not arg4.Parent then
+          return nil
+        end
+        arg.cache[arg2 .. "|" .. arg3] = arg4
+        return arg4
+      end
+
+      aceRemoteMapper.Resolve = function(arg, arg2, arg3, arg4)
+        local flag15 = arg2 ~= "RemoteEvent" and arg2 ~= "RemoteFunction" and arg2 ~= "UnreliableRemoteEvent"
+
+        if not flag15 then
+          local v75 = "function"
+          flag15 = type(arg3) ~= v75
+        end
+
+        if flag15 or arg3 == "" then
+          arg.lastError = "invalid remote request"
+          return nil
+        end
+        local resolveTimedOut = arg2 .. "|" .. arg3
+        local v75 = arg.cache[resolveTimedOut]
+        if typeof(v75) == "Instance" and v75:IsA(arg2) and v75.Parent then
+          arg.cacheHits = arg.cacheHits + 1
+          return v75
+        end
+        arg.cache[resolveTimedOut] = nil
+        if arg.blocked or not arg.allowProtectedBuild or not arg:Build() then
+          return nil
+        end
+        local tbl18 = arg.pending[resolveTimedOut]
+
+        if not tbl18 then
+          tbl18 = { Done = false, Found = nil, Error = nil, Generation = arg.generation }
+          arg.pending[resolveTimedOut] = tbl18
+
+          task.spawn(function()
+            local ok, found = pcall(function()
+              local bypass = arg.bypass and arg.bypass[arg2]
+
+              if type(bypass) ~= "function" then
+                error(arg2 .. " resolver unavailable", 0)
+              end
+
+              return bypass(arg.bypass, arg3)
+            end)
+
+            if tbl18.Generation ~= arg.generation then
+              tbl18.Done = true
+
+              if arg.pending[resolveTimedOut] == tbl18 then
+                arg.pending[resolveTimedOut] = nil
+              end
+
+              return
+            end
+
+            if ok and typeof(found) == "Instance" and found:IsA(arg2) and found.Parent then
+              if arg:IsSentinel(found.Name) then
+                arg:Trip("sentinel remote")
+              else
+                tbl18.Found = found
+                arg.cache[resolveTimedOut] = found
+                arg.resolveCount = arg.resolveCount + 1
+              end
+            else
+    
